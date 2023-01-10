@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Obligatorio2ModelStoreContainer" CdmEntityContainer="Obligatorio2Entities">
+    <EntitySetMapping Name="Mensajes">
+      <EntityTypeMapping TypeName="Obligatorio2Model.Mensajes">
+        <MappingFragment StoreEntitySet="Mensajes">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Caducidad" ColumnName="Caducidad" />
+          <ScalarProperty Name="CodigoTipo" ColumnName="CodigoTipo" />
+          <ScalarProperty Name="NombreUsuRemitente" ColumnName="NombreUsuRemitente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoMensaje">
+      <EntityTypeMapping TypeName="Obligatorio2Model.TipoMensaje">
+        <MappingFragment StoreEntitySet="TipoMensaje">
+          <ScalarProperty Name="CodigoTipo" ColumnName="CodigoTipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="Obligatorio2Model.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Reciben" TypeName="Obligatorio2Model.Reciben" StoreEntitySet="Reciben">
+      <EndProperty Name="Mensajes">
+        <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+      </EndProperty>
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuReceptor" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="BajaUsuario" FunctionName="Obligatorio2Model.Store.BajaUsuario" />
+  </EntityContainerMapping>
+</Mapping>

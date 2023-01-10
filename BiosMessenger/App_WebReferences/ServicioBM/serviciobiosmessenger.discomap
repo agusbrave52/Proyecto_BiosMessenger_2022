@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://desktop-7jrr7sj/WSbiosmessenger/serviciobiosmessenger.asmx?wsdl" filename="serviciobiosmessenger.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://desktop-7jrr7sj/WSbiosmessenger/serviciobiosmessenger.asmx?disco" filename="serviciobiosmessenger.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageUsuario.master.cs" Inherits="MasterPageUsuario" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    </head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Label ID="Label1" runat="server" Text="Nombre del Usuario: "></asp:Label>
+        <asp:Label ID="lblNomUsuario" runat="server"></asp:Label>
+        <br />
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Desloguearse</asp:HyperLink>
+        <table style="width:100%;">
+            <tr>
+                <td style="width:13%; vertical-align:baseline;padding-top:15px; text-align: center; font-size: large;" class="menu">
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/BajaYModificacionUsuario.aspx">Modificar/Eliminar Usuario</asp:HyperLink>
+                    <br />
+                    <br />
+                    <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/ABMTipoMensaje.aspx">Alta, Baja y Modificacion de Tipo de Mensaje</asp:HyperLink>
+                    <br />
+                    <br />
+                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/BandejaDeEntrada.aspx">Bandeja de Entrada</asp:HyperLink>
+                    <br />
+                    <br />
+                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/BandejaDeSalida.aspx">Bandeja de Salida</asp:HyperLink>
+                    <br />
+                    <br />
+                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/AltaMensaje.aspx">Enviar Mensaje 📨</asp:HyperLink>
+                    <br />
+                </td>
+                <td style="text-align:left;">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

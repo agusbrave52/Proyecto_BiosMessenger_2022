@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Obligatorio2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Mensajes">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Asunto" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Caducidad" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CodigoTipo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NombreUsuRemitente" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TipoMensaje" Relationship="Self.FK__Mensajes__Codigo__0EA330E9" FromRole="Mensajes" ToRole="TipoMensaje" />
+    <NavigationProperty Name="UsuariosEnv" Relationship="Self.FK__Mensajes__Nombre__0F975522" FromRole="Mensajes" ToRole="Usuarios" />
+    <NavigationProperty Name="UsuariosReciben" Relationship="Self.Reciben" FromRole="Mensajes" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="TipoMensaje">
+    <Key>
+      <PropertyRef Name="CodigoTipo" />
+    </Key>
+    <Property Name="CodigoTipo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="NombreUsuario" />
+    </Key>
+    <Property Name="NombreUsuario" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Mensajes__Codigo__0EA330E9">
+    <End Role="TipoMensaje" Type="Self.TipoMensaje" Multiplicity="1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoMensaje">
+        <PropertyRef Name="CodigoTipo" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="CodigoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Mensajes__Nombre__0F975522">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="NombreUsuario" />
+      </Principal>
+      <Dependent Role="Mensajes">
+        <PropertyRef Name="NombreUsuRemitente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Reciben">
+    <End Role="Mensajes" Type="Self.Mensajes" Multiplicity="*" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Obligatorio2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Mensajes" EntityType="Self.Mensajes" />
+    <EntitySet Name="TipoMensaje" EntityType="Self.TipoMensaje" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK__Mensajes__Codigo__0EA330E9" Association="Self.FK__Mensajes__Codigo__0EA330E9">
+      <End Role="TipoMensaje" EntitySet="TipoMensaje" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mensajes__Nombre__0F975522" Association="Self.FK__Mensajes__Nombre__0F975522">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Mensajes" EntitySet="Mensajes" />
+    </AssociationSet>
+    <AssociationSet Name="Reciben" Association="Self.Reciben">
+      <End Role="Mensajes" EntitySet="Mensajes" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <FunctionImport Name="BajaUsuario">
+      <Parameter Name="nomUsu" Mode="In" Type="String" />
+      <Parameter Name="ret" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
